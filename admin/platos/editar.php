@@ -29,6 +29,8 @@ if(isset($_POST['actualizar'])){
 
         $ruta = "../../uploads/" . $imagen;
 
+        //verificar si el archivo es una imagen
+
         move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
         $titulo_galeria = $nombre;
         $conn->query("INSERT INTO galeria (imagen, titulo, fecha_subida) 

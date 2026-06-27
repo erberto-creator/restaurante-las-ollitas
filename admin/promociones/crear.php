@@ -5,7 +5,6 @@ session_start();
 if(!isset($_SESSION['admin'])){
     header("Location: ../login.php");
 }
-
 include("../../config/conexion.php");
 
 if(isset($_POST['guardar'])){
@@ -13,9 +12,17 @@ if(isset($_POST['guardar'])){
     $titulo = $_POST['titulo'];
     $descripcion = $_POST['descripcion'];
     $inicio = $_POST['inicio'];
-    $fin = $_POST['fin'];
+    $fin = $_POST['fin'];       
 
     $imagen = $_FILES['imagen']['name'];
+
+    // MEJORA: Validar que el archivo sea una imagen
+    $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
+    $extension = strtolower(pathinfo($imagen, PATHINFO_EXTENSION));
+
+    if (!in_array($extension, $permitidas)) {
+        die("Solo se permiten imágenes JPG, JPEG, PNG y WEBP.");
+    }
 
     $ruta = "../../uploads/" . $imagen;
 
