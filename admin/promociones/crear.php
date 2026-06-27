@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+// Validación futura: verificar promociones activas
+// Sería recomendable validar que los campos no estén vacíos antes de guardar
 if(!isset($_SESSION['admin'])){
     header("Location: ../login.php");
 }
