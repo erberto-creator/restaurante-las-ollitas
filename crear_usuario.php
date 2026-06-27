@@ -4,6 +4,9 @@ include("config/conexion.php");
 
 $usuario = "rocio";
 
+
+// AGREGAR UNA CONTRASEÑA SEGURA PARA EL USUARIO
+
 $password = password_hash("lasollitas.2026", PASSWORD_DEFAULT);
 
 $sql = "INSERT INTO usuarios(
